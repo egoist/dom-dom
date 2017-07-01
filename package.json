@@ -9,6 +9,7 @@
   "main": "dist/dom-dom.common.js",
   "module": "dist/dom-dom.es.js",
   "cdn": "dist/dom-dom.min.js",
+  "unpkg": "dist/dom-dom.min.js",
   "files": [
     "dist"
   ],
