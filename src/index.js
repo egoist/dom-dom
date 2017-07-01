@@ -14,9 +14,7 @@ export function h(tag, attrs, ...children) {
         continue
       }
 
-      if (key.startsWith('on')) {
-        el.addEventListener(key.slice(2).toLocaleLowerCase(), value)
-      } else if (key === 'class' || key === 'className') {
+      if (key === 'class' || key === 'className') {
         setClassName(el, value)
       } else if (key === 'style') {
         setStyle(el, value)
@@ -24,6 +22,8 @@ export function h(tag, attrs, ...children) {
         if (value && value.__html) {
           el.innerHTML = value.__html
         }
+      } else if (key.slice(0, 2) === 'on') {
+        el.addEventListener(key.slice(2).toLocaleLowerCase(), value)
       } else {
         el.setAttribute(key, value)
       }
