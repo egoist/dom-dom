@@ -1,4 +1,4 @@
-![logo](https://ooo.0o0.ooo/2017/07/02/5957dfdb1a256.png)
+<img alt="logo" width="1016" alt="2017-07-02 1 46 12" src="https://user-images.githubusercontent.com/8784712/27764289-6ffb8ab8-5ec8-11e7-8b30-9b59ecc1d47d.png">
 
 ## Features
 
