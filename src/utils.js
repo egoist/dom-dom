@@ -21,8 +21,8 @@ export function setStyle(el, style) {
   if (typeof style === 'object') {
     for (const key in style) {
       const value = style[key]
-      if (typeof value === 'number' && !IS_NON_DIMENSIONAL.test(value)) {
-        el.style[key] = `${style[key]}px`
+      if (typeof value === 'number' && !IS_NON_DIMENSIONAL.test(key)) {
+        el.style[key] = `${value}px`
       } else {
         el.style[key] = value
       }
