@@ -1,6 +1,4 @@
-# dom-dom
-
-[![NPM version](https://img.shields.io/npm/v/dom-dom.svg?style=flat)](https://npmjs.com/package/dom-dom) [![NPM downloads](https://img.shields.io/npm/dm/dom-dom.svg?style=flat)](https://npmjs.com/package/dom-dom) [![CircleCI](https://circleci.com/gh/egoist/dom-dom/tree/master.svg?style=shield&circle-token=1b6201de2b133f5b995fe2730a24b497768d85c6)](https://circleci.com/gh/egoist/dom-dom/tree/master)  [![donate](https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&style=flat)](https://github.com/egoist/donate)
+![logo](https://ooo.0o0.ooo/2017/07/02/5957dfdb1a256.png)
 
 ## Features
 
@@ -86,6 +84,9 @@ This project is heavily inspired by [dom-chef](https://github.com/vadimdemedes/d
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
 
+## Badges
+
+[![NPM version](https://img.shields.io/npm/v/dom-dom.svg?style=flat)](https://npmjs.com/package/dom-dom) [![NPM downloads](https://img.shields.io/npm/dm/dom-dom.svg?style=flat)](https://npmjs.com/package/dom-dom) [![CircleCI](https://circleci.com/gh/egoist/dom-dom/tree/master.svg?style=shield&circle-token=1b6201de2b133f5b995fe2730a24b497768d85c6)](https://circleci.com/gh/egoist/dom-dom/tree/master)  [![donate](https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&style=flat)](https://github.com/egoist/donate)
 
 ## Author
 
