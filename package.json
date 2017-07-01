@@ -1,0 +1,69 @@
+{
+  "name": "dom-dom",
+  "version": "0.0.0",
+  "description": "A real dom builder.",
+  "repository": {
+    "url": "egoist/dom-dom",
+    "type": "git"
+  },
+  "main": "dist/dom-dom.common.js",
+  "module": "dist/dom-dom.es.js",
+  "cdn": "dist/dom-dom.min.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "jest && npm run lint",
+    "lint": "xo",
+    "prepublish": "npm run build",
+    "build": "bili --format cjs,es,umd,umd-compress --module-name d2 --banner"
+  },
+  "author": "egoist <0x142857@gmail.com>",
+  "license": "MIT",
+  "babel": {
+    "env": {
+      "test": {
+        "presets": [
+          [
+            "env",
+            {
+              "targets": {
+                "node": "current"
+              }
+            }
+          ]
+        ],
+        "plugins": [
+          [
+            "transform-react-jsx",
+            {
+              "pragma": "h"
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.4.0",
+    "bili": "^0.16.0-rc.2",
+    "eslint-config-rem": "^3.0.0",
+    "jest-cli": "^19.0.0",
+    "sinon": "^2.3.6",
+    "xo": "^0.18.0"
+  },
+  "xo": {
+    "extends": "rem/prettier",
+    "envs": [
+      "jest",
+      "browser"
+    ],
+    "rules": {
+      "no-warning-comments": 0,
+      "import/prefer-default-export": 0,
+      "guard-for-in": 0
+    }
+  }
+}
