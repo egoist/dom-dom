@@ -1,7 +1,7 @@
 {
   "name": "dom-dom",
   "version": "0.0.0",
-  "description": "A real dom builder.",
+  "description": "JSX to actual DOM.",
   "repository": {
     "url": "egoist/dom-dom",
     "type": "git"
