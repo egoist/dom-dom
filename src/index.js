@@ -11,7 +11,7 @@ export function h(tag, attrs, ...children) {
 
       // Ignore `key`
       if (key === 'key') {
-        break
+        continue
       }
 
       if (key.startsWith('on')) {
