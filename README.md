@@ -18,7 +18,7 @@ CDN: [UNPKG](https://unpkg.com/dom-dom/dist/) | [jsDelivr](https://cdn.jsdelivr.
 
 ## Usage
 
-With `babel-plugin-transform-react-jsx`:
+With a transpiler like `babel+babel-plugin-transform-react-jsx` or `typescript` or `buble`:
 
 ```js
 /* @jsx h */
