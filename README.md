@@ -16,6 +16,8 @@
 yarn add dom-dom
 ```
 
+CDN: [UNPKG](https://unpkg.com/dom-dom/dist/) | [jsDelivr](https://cdn.jsdelivr.net/npm/dom-dom/dist/)
+
 ## Usage
 
 With `babel-plugin-transform-react-jsx`:
@@ -28,6 +30,8 @@ document.body.appendChild(
   <h1 style={{fontSize: 20}}>Hello World!</h1>
 )
 ```
+
+Note that while using CDN version you can access `d2.h` instead.
 
 ### className
 
