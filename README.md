@@ -2,7 +2,7 @@
 
 ## About
 
-This is not yet another minimalistic React implementation, the main use case is to create actual dom with a single function and JSX directly, so there's no component system at all.
+This is not yet another minimalistic React implementation, the main use case is to create actual dom with a single function and JSX directly, but there're opt-in component lifecycle hooks.
 
 ## Features
 
@@ -26,7 +26,7 @@ With a transpiler like `babel+babel-plugin-transform-react-jsx` or `typescript` 
 
 ```js
 /* @jsx h */
-import { h, mount } from 'dom-dom'
+import { h, mount } from 'dom-dom/tiny'
 
 // With only first arg
 const button = mount(<button>click me</button>)
@@ -42,59 +42,6 @@ mount(
 ```
 
 Note that while using CDN version you can access `d2.h` `d2.mount` instead.
-
-> **WARNING:** If you only want a function to transform vNode to actual dom, please stop reading!!! Above features would be enough for your use case. Following features may not be what you want :D
-> And you should import from `dom-dom/tiny` instead.
-
-<details><summary>Create your own React with <strong>dom-dom</strong></summary><br>
-
-```js
-// @jsx h
-
-import { h, mount } from 'dom-dom'
-
-class Component {
-  setState(state) {
-    if (typeof state === 'function') {
-      state = state(this.state)
-    }
-    for (const key in state) {
-      this.state[key] = state[key]
-    }
-    this.mount()
-  }
-
-  mount(root = this._root) {
-    const vNode = this.render()
-    this._root = mount(vNode, root)
-    return this._root
-  }
-}
-
-class Counter extends Component {
-  state = { count: 0 }
-
-  handleClick = () => {
-    this.setState(prevState => ({
-      count: prevState.count + 1
-    }))
-  }
-
-  render() {
-    return (
-      <button onClick={this.handleClick}>
-        clicked: {this.state.count} times
-      </button>
-    )
-  }
-}
-
-const counter = new Counter()
-counter.mount(document.getElementById('root'))
-```
-
-[![Edit 9Q4n4XxAP](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/9Q4n4XxAP)
-</details>
 
 ### className
 
@@ -135,6 +82,108 @@ React-like events are supports:
 
 ```js
 <button onClick={handleClick}></button>
+```
+
+> **WARNING:** If you only want a function to transform vNode to actual dom, please stop reading!!! Above features would be enough for your use case. Following features may not be what you want :D
+> To use full build you should `import { xxx } from 'dom-dom'` instead.
+
+<details><summary>Create your own React with <strong>dom-dom</strong></summary><br>
+
+```js
+// @jsx h
+
+import { h, mount } from 'dom-dom'
+
+class Component {
+  setState(state) {
+    if (typeof state === 'function') {
+      state = state(this.state)
+    }
+    for (const key in state) {
+      this.state[key] = state[key]
+    }
+    this.mount()
+  }
+
+  mount(root = this.$root) {
+    this.$root = mount(this, root)
+    return this.$root
+  }
+
+  componentDidMount() {
+    console.log('app mounted!')
+  }
+}
+
+class Counter extends Component {
+  state = { count: 0 }
+
+  handleClick = () => {
+    this.setState(prevState => ({
+      count: prevState.count + 1
+    }))
+  }
+
+  render() {
+    return (
+      <button onClick={this.handleClick}>
+        clicked: {this.state.count} times
+      </button>
+    )
+  }
+}
+
+const counter = new Counter()
+counter.mount(document.getElementById('root'))
+
+// When you no longer need this app
+unmount(counter, counter.$root)
+```
+
+[![Edit 9Q4n4XxAP](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/9Q4n4XxAP)
+</details><br>
+
+You can `mount` `unmount` a object or class instance which has a `render` method that returns `vNode`.
+
+```js
+import { h, mount } from 'dom-dom'
+
+const A = {
+  render() {
+    return <div>a</div>
+  }
+}
+
+const B = class {
+  render() {
+    return <div>{A}</div>
+  }
+}
+
+mount(new B, document.getElementById('root'))
+```
+
+Object and class instance with render function can also be one of your JSX children.
+
+This is designed for using lifecycle hooks, currently we have `componentDidMount` `componentWillMount` and `componentWillUnmount`.
+
+```js
+const App = {
+  componentDidMount() {
+    console.log('hi')
+  },
+  componentWillUnmount() {
+    co,nsole.log('bye')
+  },
+  render() {
+    return <div>hi</div>
+  }
+}
+
+const root = mount(App, document.getElementById('root'))
+//=> hi
+unmount(App, root)
+//=> bye
 ```
 
 ## Prior Art
