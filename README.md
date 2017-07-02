@@ -28,14 +28,22 @@ With a transpiler like `babel+babel-plugin-transform-react-jsx` or `typescript` 
 /* @jsx h */
 import { h, mount } from 'dom-dom'
 
-mount(
-  <h1 style={{fontSize: 20}}>Hello World!</h1>,
-  document.body
-)
-// is equivalent to
-document.body.appendChild(
-  mount(<h1 style={{fontSize: 20}}>Hello World!</h1>)
-)
+// With only first arg
+const button = mount(<button>click me</button>)
+// button.outerHTML:
+// => '<button>click me</button>'
+
+// With second arg
+let count = 0
+const app = mount(() => (
+  <button>{count}</button>
+), document.getElementById('root'))
+// app.el.outerHTML:
+// => '<button>0</button>'
+count++
+app.update()
+// app.el.outerHTML:
+// => '<button>1</button>'
 ```
 
 Note that while using CDN version you can access `d2.h` `d2.mount` instead.
