@@ -29,28 +29,3 @@ export function setStyle(el, style) {
     }
   }
 }
-
-const svgTags = [
-  'animate',
-  'circle',
-  'defs',
-  'ellipse',
-  'g',
-  'line',
-  'linearGradient',
-  'mask',
-  'path',
-  'pattern',
-  'polygon',
-  'polyline',
-  'radialGradient',
-  'rect',
-  'stop',
-  'svg',
-  'text',
-  'tspan'
-]
-
-export function isSVG(tagName) {
-  return svgTags.indexOf(tagName) >= 0
-}

@@ -3,7 +3,7 @@
 ## Features
 
 - [x] Insanely small: 1.4kB minified
-- [x] No API: JSX is transformed to actual DOM under the hood
+- [x] One API: JSX is transformed to vNode, use `mount()` to get actual DOM.
 - [x] SVG support
 - [x] Protection from XSS injections
 - [x] Automatically joining classNames, styles
@@ -22,14 +22,19 @@ With a transpiler like `babel+babel-plugin-transform-react-jsx` or `typescript` 
 
 ```js
 /* @jsx h */
-import { h } from 'dom-dom'
+import { h, mount } from 'dom-dom'
 
+mount(
+  <h1 style={{fontSize: 20}}>Hello World!</h1>,
+  document.body
+)
+// is equivalent to
 document.body.appendChild(
-  <h1 style={{fontSize: 20}}>Hello World!</h1>
+  mount(<h1 style={{fontSize: 20}}>Hello World!</h1>)
 )
 ```
 
-Note that while using CDN version you can access `d2.h` instead.
+Note that while using CDN version you can access `d2.h` `d2.mount` instead.
 
 ### className
 
@@ -74,7 +79,7 @@ React-like events are supports:
 
 ## Prior Art
 
-This project is heavily inspired by [dom-chef](https://github.com/vadimdemedes/dom-chef).
+This project is heavily inspired by [preact](https://github.com/developit/preact) and [dom-chef](https://github.com/vadimdemedes/dom-chef).
 
 ## Contributing
 

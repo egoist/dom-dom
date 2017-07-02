@@ -64,7 +64,9 @@
     "rules": {
       "no-warning-comments": 0,
       "import/prefer-default-export": 0,
-      "guard-for-in": 0
+      "guard-for-in": 0,
+      "eqeqeq": ["error", "always", {"null": "ignore"}],
+      "no-eq-null": 0
     }
   }
 }

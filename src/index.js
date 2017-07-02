@@ -1,13 +1,19 @@
-import { setClassName, setStyle, isSVG } from './utils'
+import { setClassName, setStyle } from './utils'
 
-export function h(tag, attrs, ...children) {
-  const el = isSVG(tag)
+let isSvgMode = false
+
+function createElement({ tag, data, children }) {
+  const prevSvgMode = isSvgMode
+
+  isSvgMode = tag === 'svg' ? true : tag === 'foreignObject' ? false : isSvgMode
+
+  const el = isSvgMode
     ? document.createElementNS('http://www.w3.org/2000/svg', tag)
     : document.createElement(tag)
 
-  if (attrs) {
-    for (const key in attrs) {
-      const value = attrs[key]
+  if (data) {
+    for (const key in data) {
+      const value = data[key]
 
       // Ignore `key`
       if (key === 'key') {
@@ -31,15 +37,25 @@ export function h(tag, attrs, ...children) {
   }
 
   for (const child of children) {
-    if (child instanceof Element) {
+    if (typeof child === 'object') {
+      el.appendChild(createElement(child))
+    } else if (child instanceof Element) {
       el.appendChild(child.cloneNode(true))
-    } else if (typeof child === 'boolean' || child === null) {
-      el.appendChild('')
     } else {
-      // TODO: group multiple sibling text nodes into a single node
-      el.appendChild(document.createTextNode(String(child)))
+      el.appendChild(document.createTextNode(child))
     }
   }
 
+  // restore previous SVG mode: (in case we're exiting an SVG namespace)
+  isSvgMode = prevSvgMode
+
   return el
 }
+
+export function mount(node, mountTo) {
+  const el = createElement(node)
+  mountTo && mountTo.appendChild(el)
+  return el
+}
+
+export { h } from './h'
