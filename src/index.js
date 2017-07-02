@@ -2,7 +2,7 @@ import { setClassName, setStyle } from './utils'
 
 let isSvgMode = false
 
-function createElement({ tag, data, children }) {
+export function createElement({ tag, data, children }) {
   const prevSvgMode = isSvgMode
 
   isSvgMode = tag === 'svg' ? true : tag === 'foreignObject' ? false : isSvgMode
