@@ -153,7 +153,11 @@ describe('lifecycle', () => {
 
     const root = {
       render() {
-        return <div>{child}</div>
+        return (
+          <div>
+            {child}
+          </div>
+        )
       }
     }
 
@@ -175,7 +179,11 @@ describe('lifecycle', () => {
       }
     }
 
-    const root = <div>{child}</div>
+    const root = (
+      <div>
+        {child}
+      </div>
+    )
 
     mount(root, document.getElementById('root'))
     expect(document.body.innerHTML).toBe('<div><span>hi</span></div>')
