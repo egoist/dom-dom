@@ -13,6 +13,17 @@ describe('basic', () => {
     const el = mount(<div class="foo" id="bar" />)
     expect(el.outerHTML).toBe('<div class="foo" id="bar"></div>')
   })
+
+  it('allows child dom element', () => {
+    const dom = document.createElement('span')
+    const el = mount(
+      <div>
+        {dom}
+      </div>
+    )
+
+    expect(el.outerHTML).toBe('<div><span></span></div>')
+  })
 })
 
 describe('children', () => {
