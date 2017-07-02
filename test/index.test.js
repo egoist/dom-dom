@@ -152,7 +152,7 @@ describe('mount', () => {
       }
     }
 
-    const update = mount(app, document.getElementById('root'))
+    const { update } = mount(app, document.getElementById('root'))
     expect(document.body.innerHTML).toBe('<div>0</div>')
 
     app.data.count++
