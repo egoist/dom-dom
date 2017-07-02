@@ -190,6 +190,34 @@ describe('lifecycle', () => {
     expect(called).toBe(true)
   })
 
+  it('mounts class instance', () => {
+    document.body.innerHTML = '<div id="root"></div>'
+    let called = false
+
+    const Child = class {
+      render() {
+        return <span>hi</span>
+      }
+      componentDidMount() {
+        called = true
+      }
+    }
+
+    const Root = class {
+      render() {
+        return (
+          <div>
+            {new Child()}
+          </div>
+        )
+      }
+    }
+
+    mount(new Root(), document.getElementById('root'))
+    expect(document.body.innerHTML).toBe('<div><span>hi</span></div>')
+    expect(called).toBe(true)
+  })
+
   it('unmounts', () => {
     document.body.innerHTML = '<div id="root"></div>'
     let called = false

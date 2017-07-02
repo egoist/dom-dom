@@ -31,8 +31,8 @@ export function setStyle(el, style) {
 }
 
 export function recordLicecycleHooks(hooks, component) {
-  for (const key in component) {
-    if (hooks[key]) {
+  for (const key in hooks) {
+    if (component[key]) {
       hooks[key].push(component[key].bind(component))
     }
   }
