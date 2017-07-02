@@ -1,6 +1,6 @@
 {
   "name": "dom-dom",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "JSX to actual DOM.",
   "repository": {
     "url": "egoist/dom-dom",
