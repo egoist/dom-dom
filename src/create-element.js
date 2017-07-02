@@ -37,7 +37,9 @@ export function createElement({ tag, data, children }, hooks = {}) {
   }
 
   for (const child of children) {
-    if (typeof child === 'object') {
+    if (child instanceof Element) {
+      el.appendChild(child.cloneNode(true))
+    } else if (typeof child === 'object') {
       if (child.render) {
         // is a component
         el.appendChild(createElement(child.render()))
@@ -45,8 +47,6 @@ export function createElement({ tag, data, children }, hooks = {}) {
       } else {
         el.appendChild(createElement(child))
       }
-    } else if (child instanceof Element) {
-      el.appendChild(child.cloneNode(true))
     } else {
       el.appendChild(document.createTextNode(child))
     }
