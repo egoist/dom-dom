@@ -135,28 +135,4 @@ describe('mount', () => {
     mount(<div>hi</div>, document.getElementById('root'))
     expect(document.body.innerHTML).toBe('<div>hi</div>')
   })
-
-  it('can update', () => {
-    document.body.innerHTML = '<div id="root"></div>'
-
-    const app = {
-      data: {
-        count: 0
-      },
-      render() {
-        return (
-          <div>
-            {this.data.count}
-          </div>
-        )
-      }
-    }
-
-    const { update } = mount(app, document.getElementById('root'))
-    expect(document.body.innerHTML).toBe('<div>0</div>')
-
-    app.data.count++
-    update()
-    expect(document.body.innerHTML).toBe('<div>1</div>')
-  })
 })

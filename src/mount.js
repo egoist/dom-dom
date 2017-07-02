@@ -13,10 +13,6 @@ export function mount(node, root) {
 
   if (root) {
     root.parentNode.replaceChild(el, root)
-    return {
-      update: () => mount(node, el),
-      el
-    }
   }
 
   return el
