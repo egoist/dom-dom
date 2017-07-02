@@ -109,10 +109,11 @@ class Component {
     this.$root = mount(this, root)
     return this.$root
   }
-
-  componentDidMount() {
-    console.log('app mounted!')
+  
+  destroy = () => {
+    unmount(this, this.$root)
   }
+
 }
 
 class Counter extends Component {
@@ -124,16 +125,16 @@ class Counter extends Component {
     }))
   }
   
-  handleDestroy = () => {
-    unmount(this, this.$root)
+  componentDidMount() {
+    console.log('app mounted!', this)
   }
-
+  
   render() {
     return (<div>
       <button onClick={this.handleClick}>
         clicked: {this.state.count} times
       </button>
-      <button onClick={this.handleDestroy}>destroy</button>
+      <button onClick={this.destroy}>destroy</button>
     </div>)
   }
 }
