@@ -41,6 +41,8 @@ mount(
 )
 ```
 
+[![Edit 9Q4n4XxAP](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/9Q4n4XxAP)
+
 Note that while using CDN version you can access `d2.h` `d2.mount` instead.
 
 ### className
