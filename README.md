@@ -92,7 +92,7 @@ React-like events are supports:
 ```js
 // @jsx h
 
-import { h, mount } from 'dom-dom'
+import { h, mount, unmount } from 'dom-dom'
 
 class Component {
   setState(state) {
@@ -123,24 +123,26 @@ class Counter extends Component {
       count: prevState.count + 1
     }))
   }
+  
+  handleDestroy = () => {
+    unmount(this, this.$root)
+  }
 
   render() {
-    return (
+    return (<div>
       <button onClick={this.handleClick}>
         clicked: {this.state.count} times
       </button>
-    )
+      <button onClick={this.handleDestroy}>destroy</button>
+    </div>)
   }
 }
 
 const counter = new Counter()
 counter.mount(document.getElementById('root'))
-
-// When you no longer need this app
-unmount(counter, counter.$root)
 ```
 
-[![Edit 9Q4n4XxAP](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/9Q4n4XxAP)
+[![Edit 9Q4n4XxAP](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/VyGn0DP5)
 </details><br>
 
 You can `mount` `unmount` a object or class instance which has a `render` method that returns `vNode`.
