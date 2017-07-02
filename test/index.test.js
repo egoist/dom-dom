@@ -138,7 +138,7 @@ describe('mount', () => {
 })
 
 describe('lifecycle', () => {
-  it('mount', () => {
+  it('mounts and root is component', () => {
     document.body.innerHTML = '<div id="root"></div>'
     let called = false
 
@@ -150,18 +150,39 @@ describe('lifecycle', () => {
         called = true
       }
     }
-    const node = (
-      <div>
-        {child}
-      </div>
-    )
 
-    mount(node, document.getElementById('root'))
+    const root = {
+      render() {
+        return <div>{child}</div>
+      }
+    }
+
+    mount(root, document.getElementById('root'))
     expect(document.body.innerHTML).toBe('<div><span>hi</span></div>')
     expect(called).toBe(true)
   })
 
-  it('unmount', () => {
+  it('mounts and root is not component', () => {
+    document.body.innerHTML = '<div id="root"></div>'
+    let called = false
+
+    const child = {
+      render() {
+        return <span>hi</span>
+      },
+      componentDidMount() {
+        called = true
+      }
+    }
+
+    const root = <div>{child}</div>
+
+    mount(root, document.getElementById('root'))
+    expect(document.body.innerHTML).toBe('<div><span>hi</span></div>')
+    expect(called).toBe(true)
+  })
+
+  it('unmounts', () => {
     document.body.innerHTML = '<div id="root"></div>'
     let called = false
 

@@ -13,7 +13,7 @@ export function mount(node, root) {
     // Add hooks for root component only
     // Hooks in child components will be added in `createElement`
     addHooks(hooks, node, false)
-    el = createElement(node.render())
+    el = createElement(node.render(), hooks)
   } else {
     el = createElement(node, hooks)
   }
