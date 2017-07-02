@@ -2,7 +2,9 @@
 
 ## About
 
-This is not yet another minimalistic React implementation, the main use case is to create actual dom with a single function and JSX directly, but there're opt-in component lifecycle hooks.
+This is not yet another minimalistic React implementation, the primary use case is to create actual dom with a single function and JSX directly, but there're opt-in component lifecycle hooks.
+
+This lib does not accept pull requests for new features since the primary use case (get actual DOM from JSX) is already set for good.
 
 ## Features
 
