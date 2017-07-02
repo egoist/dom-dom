@@ -1,6 +1,6 @@
 {
   "name": "dom-dom",
-  "version": "0.1.3",
+  "version": "1.0.0",
   "description": "JSX to actual DOM.",
   "repository": {
     "url": "egoist/dom-dom",
@@ -65,7 +65,13 @@
       "no-warning-comments": 0,
       "import/prefer-default-export": 0,
       "guard-for-in": 0,
-      "eqeqeq": ["error", "always", {"null": "ignore"}],
+      "eqeqeq": [
+        "error",
+        "always",
+        {
+          "null": "ignore"
+        }
+      ],
       "no-eq-null": 0
     }
   }
