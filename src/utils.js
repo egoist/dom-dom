@@ -29,3 +29,29 @@ export function setStyle(el, style) {
     }
   }
 }
+
+export function recordLicecycleHooks(hooks, component) {
+  for (const key in component) {
+    if (hooks[key]) {
+      hooks[key].push(component[key].bind(component))
+    }
+  }
+}
+
+export function runHooks(hooks, name) {
+  for (const hook of hooks[name]) {
+    hook()
+  }
+}
+
+export function addHooks(hooks, component, deep = true) {
+  if (component.render) {
+    recordLicecycleHooks(hooks, component)
+    const node = component.render(component)
+    if (deep && node && node.children) {
+      for (const child of node.children) {
+        addHooks(hooks, child)
+      }
+    }
+  }
+}

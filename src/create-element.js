@@ -1,8 +1,8 @@
-import { setClassName, setStyle } from './utils'
+import { setClassName, setStyle, recordLicecycleHooks } from './utils'
 
 let isSvgMode = false
 
-export function createElement({ tag, data, children }) {
+export function createElement({ tag, data, children }, hooks = {}) {
   const prevSvgMode = isSvgMode
 
   isSvgMode = tag === 'svg' ? true : tag === 'foreignObject' ? false : isSvgMode
@@ -38,7 +38,13 @@ export function createElement({ tag, data, children }) {
 
   for (const child of children) {
     if (typeof child === 'object') {
-      el.appendChild(createElement(child))
+      if (child.render) {
+        // is a component
+        el.appendChild(createElement(child.render()))
+        recordLicecycleHooks(hooks, child)
+      } else {
+        el.appendChild(createElement(child))
+      }
     } else if (child instanceof Element) {
       el.appendChild(child.cloneNode(true))
     } else {

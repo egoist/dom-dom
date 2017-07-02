@@ -1,6 +1,6 @@
 import { spy } from 'sinon'
 // eslint-disable-next-line no-unused-vars
-import { h, mount } from '../src'
+import { h, mount, unmount } from '../src'
 
 describe('basic', () => {
   it('has empty content', () => {
@@ -134,5 +134,48 @@ describe('mount', () => {
 
     mount(<div>hi</div>, document.getElementById('root'))
     expect(document.body.innerHTML).toBe('<div>hi</div>')
+  })
+})
+
+describe('lifecycle', () => {
+  it('mount', () => {
+    document.body.innerHTML = '<div id="root"></div>'
+    let called = false
+
+    const child = {
+      render() {
+        return <span>hi</span>
+      },
+      componentDidMount() {
+        called = true
+      }
+    }
+    const node = (
+      <div>
+        {child}
+      </div>
+    )
+
+    mount(node, document.getElementById('root'))
+    expect(document.body.innerHTML).toBe('<div><span>hi</span></div>')
+    expect(called).toBe(true)
+  })
+
+  it('unmount', () => {
+    document.body.innerHTML = '<div id="root"></div>'
+    let called = false
+
+    const app = {
+      render() {
+        return <div>app</div>
+      },
+      componentWillUnmount() {
+        called = true
+      }
+    }
+
+    const root = mount(app, document.getElementById('root'))
+    unmount(app, root)
+    expect(called).toBe(true)
   })
 })

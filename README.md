@@ -6,7 +6,7 @@ This is not yet another minimalistic React implementation, the main use case is 
 
 ## Features
 
-- [x] Insanely small: 1.4kB minified
+- [x] Insanely small: 2kB minified
 - [x] One API: JSX is transformed to vNode, use `mount(vNode)` to get actual DOM.
 - [x] SVG support
 - [x] Protection from XSS injections
