@@ -41,9 +41,57 @@ mount(
 )
 ```
 
-[![Edit 9Q4n4XxAP](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/9Q4n4XxAP)
-
 Note that while using CDN version you can access `d2.h` `d2.mount` instead.
+
+<details><summary>Create your own React with <strong>dom-dom</strong></summary><br>
+
+```js
+// @jsx h
+
+import { h, mount } from 'dom-dom'
+
+class Component {
+  setState(state) {
+    if (typeof state === 'function') {
+      state = state(this.state)
+    }
+    for (const key in state) {
+      this.state[key] = state[key]
+    }
+    this.mount()
+  }
+
+  mount(root = this._root) {
+    const vNode = this.render()
+    this._root = mount(vNode, root)
+    return this._root
+  }
+}
+
+class Counter extends Component {
+  state = { count: 0 }
+
+  handleClick = () => {
+    this.setState(prevState => ({
+      count: prevState.count + 1
+    }))
+  }
+
+  render() {
+    return (
+      <button onClick={this.handleClick}>
+        clicked: {this.state.count} times
+      </button>
+    )
+  }
+}
+
+const counter = new Counter()
+counter.mount(document.getElementById('root'))
+```
+</details><br>
+
+[![Edit 9Q4n4XxAP](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/9Q4n4XxAP)
 
 ### className
 
