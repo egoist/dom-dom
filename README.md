@@ -84,6 +84,8 @@ React-like events are supports:
 <button onClick={handleClick}></button>
 ```
 
+---
+
 > **WARNING:** If you only want a function to transform vNode to actual dom, please stop reading!!! Above features would be enough for your use case. Following features may not be what you want :D
 > To use full build you should `import { xxx } from 'dom-dom'` instead.
 
