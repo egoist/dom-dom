@@ -43,6 +43,9 @@ mount(
 
 Note that while using CDN version you can access `d2.h` `d2.mount` instead.
 
+> **WARNING:** If you only want a function to transform vNode to actual dom, please stop reading!!! Above features would be enough for your use case. Following features may not be what you want :D
+> And you should import from `dom-dom/tiny` instead.
+
 <details><summary>Create your own React with <strong>dom-dom</strong></summary><br>
 
 ```js
