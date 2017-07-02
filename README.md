@@ -1,5 +1,9 @@
 <a href="#features"><img alt="logo" width="1016" alt="2017-07-02 1 46 12" src="https://user-images.githubusercontent.com/8784712/27764289-6ffb8ab8-5ec8-11e7-8b30-9b59ecc1d47d.png"></a>
 
+## About
+
+This is not yet another minimalistic React implementation, the main use case is to create actual dom with a single function and JSX directly, so there's no component system at all.
+
 ## Features
 
 - [x] Insanely small: 1.4kB minified
