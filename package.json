@@ -19,7 +19,7 @@
     "prepublish": "npm run build",
     "build": "bili --format cjs,es,umd,umd-compress --module-name d2 --banner"
   },
-  "author": "egoist <0x142857@gmail.com>",
+  "author": "egoist <0x142857@gmail.com> (https://github.com/egoist)",
   "license": "MIT",
   "babel": {
     "env": {
