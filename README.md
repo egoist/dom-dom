@@ -176,7 +176,7 @@ const App = {
     console.log('hi')
   },
   componentWillUnmount() {
-    co,nsole.log('bye')
+    console.log('bye')
   },
   render() {
     return <div>hi</div>
