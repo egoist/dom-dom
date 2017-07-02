@@ -34,16 +34,11 @@ const button = mount(<button>click me</button>)
 // => '<button>click me</button>'
 
 // With second arg
-let count = 0
-const app = mount(() => (
-  <button>{count}</button>
-), document.getElementById('root'))
-// app.el.outerHTML:
-// => '<button>0</button>'
-count++
-app.update()
-// app.el.outerHTML:
-// => '<button>1</button>'
+// replacce `#root` with created element
+mount(
+  <button>hello</button>, 
+  document.getElementById('root')
+)
 ```
 
 Note that while using CDN version you can access `d2.h` `d2.mount` instead.
