@@ -89,9 +89,9 @@ class Counter extends Component {
 const counter = new Counter()
 counter.mount(document.getElementById('root'))
 ```
-</details><br>
 
 [![Edit 9Q4n4XxAP](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/9Q4n4XxAP)
+</details>
 
 ### className
 
